@@ -1,4 +1,4 @@
-# Signal Android 
+# Signal Android Project
 
 Signal is a messaging app for simple private communication with friends.
 
