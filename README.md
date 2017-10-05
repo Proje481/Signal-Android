@@ -76,3 +76,5 @@ Google Play and the Google Play logo are trademarks of Google Inc.
 ## OUR CHANGES
 
 Selen YEL editted this part
+
+Elif HANGÜL made this comment.
