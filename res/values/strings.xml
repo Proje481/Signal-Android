@@ -1211,10 +1211,12 @@
     <string name="preferences__choose_identity">Choose identity</string>
     <string name="preferences__choose_your_contact_entry_from_the_contacts_list">Choose your contact entry from the contacts list.</string>
     <string name="preferences__change_passphrase">Change passphrase</string>
+    <string name="preferences__change_hint">Change hint</string>
     <string name="preferences__change_your_passphrase">Change your passphrase</string>
+    <string name="preferences__change_your_hint">Change your passphrase hint</string>
     <string name="preferences__enable_passphrase">Enable passphrase</string>
     <string name="preferences__lock_signal_and_message_notifications_with_a_passphrase">Lock Signal and message notifications with a passphrase</string>
-    <string name="preferences__enable_passphrase_hint">Enable hints</string>
+    <string name="preferences__enable_passphrase_hint">Enable passphrase hint</string>
     <string name="preferences__enable_passphrase_hint_summary">Using hints may help you to remember your passphrase</string>
     <string name="preferences__screen_security">Screen security</string>
     <string name="preferences__disable_screen_security_to_allow_screen_shots">Block screenshots in the recents list and inside the app</string>
