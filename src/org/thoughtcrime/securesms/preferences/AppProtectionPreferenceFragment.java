@@ -35,7 +35,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
   private MasterSecret       masterSecret;
   private CheckBoxPreference disablePassphrase;
-  private CheckBoxPreference disableHint;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -43,7 +42,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
     masterSecret      = getArguments().getParcelable("master_secret");
     disablePassphrase = (CheckBoxPreference) this.findPreference("pref_enable_passphrase_temporary");
-    disableHint       = (CheckBoxPreference) this.findPreference("pref_enable_passphrase_hint_temporary");
 
     this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_HINT_PREF)
         .setOnPreferenceClickListener(new ChangeHintClickListener());
@@ -57,8 +55,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         .setOnPreferenceClickListener(new BlockedContactsClickListener());
     disablePassphrase
         .setOnPreferenceChangeListener(new DisablePassphraseClickListener());
-    disableHint
-        .setOnPreferenceChangeListener(new DisableHintClickListener());
   }
 
   @Override
@@ -183,16 +179,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         Intent intent = new Intent(getActivity(), PassphraseChangeActivity.class);
         startActivity(intent);
       }
-
-      return false;
-    }
-  }
-
-  private class DisableHintClickListener implements Preference.OnPreferenceChangeListener {
-
-    @Override
-    public boolean onPreferenceChange(final Preference preference, Object newValue) {
-      Toast.makeText(getActivity(), "Not implemented yet", Toast.LENGTH_SHORT).show();
 
       return false;
     }

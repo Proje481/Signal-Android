@@ -13,16 +13,10 @@
                     android:summary="@string/preferences__change_your_passphrase"
                     android:dependency="pref_enable_passphrase_temporary"/>
 
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:key="pref_enable_passphrase_hint_temporary"
-            android:defaultValue="false"
-            android:title="@string/preferences__enable_passphrase_hint"
-            android:summary="@string/preferences__enable_passphrase_hint_summary"/>
-
         <Preference android:key="pref_change_hint"
             android:title="@string/preferences__change_hint"
             android:summary="@string/preferences__change_your_hint"
-            android:dependency="pref_enable_passphrase_hint_temporary"/>
+            android:dependency="pref_enable_passphrase_temporary"/>
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                 android:defaultValue="false"
