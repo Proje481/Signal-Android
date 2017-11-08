@@ -30,6 +30,7 @@ public class TextSecurePreferences {
   public  static final String CHANGE_PASSPHRASE_PREF           = "pref_change_passphrase";
   public  static final String DISABLE_PASSPHRASE_PREF          = "pref_disable_passphrase";
   public  static final String CHANGE_PASSPHRASE_HINT_PREF      = "pref_change_hint";
+  public  static final String PASSHRASE_HINT_TEXT              = "pref_hint_text";
   public  static final String THEME_PREF                       = "pref_theme";
   public  static final String LANGUAGE_PREF                    = "pref_language";
   private static final String MMSC_CUSTOM_HOST_PREF            = "pref_apn_mmsc_custom_host";
@@ -367,6 +368,19 @@ public class TextSecurePreferences {
 
   public static boolean isEnterSendsEnabled(Context context) {
     return getBooleanPreference(context, ENTER_SENDS_PREF, false);
+  }
+
+  public static String getHintText(Context context) {
+    return getStringPreference(context, PASSHRASE_HINT_TEXT, "");
+  }
+
+  public static void setHintText(Context context, String hint) {
+    setStringPreference(context, PASSHRASE_HINT_TEXT, hint);
+  }
+
+  public static boolean hasHint(Context context) {
+    String hint = getHintText(context);
+    return hint != null && hint.length() != 0;
   }
 
   public static boolean isPasswordDisabled(Context context) {
