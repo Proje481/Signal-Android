@@ -47,6 +47,7 @@ public class PassphraseChangeActivity extends PassphraseActivity {
   private EditText originalPassphrase;
   private EditText newPassphrase;
   private EditText repeatPassphrase;
+  private EditText hint;
   private Button   okButton;
   private Button   cancelButton;
 
@@ -72,6 +73,7 @@ public class PassphraseChangeActivity extends PassphraseActivity {
     this.originalPassphrase      = (EditText) findViewById(R.id.old_passphrase      );
     this.newPassphrase           = (EditText) findViewById(R.id.new_passphrase      );
     this.repeatPassphrase        = (EditText) findViewById(R.id.repeat_passphrase   );
+    this.hint                    = (EditText) findViewById(R.id.passphrase_hint);
 
     this.okButton                = (Button  ) findViewById(R.id.ok_button           );
     this.cancelButton            = (Button  ) findViewById(R.id.cancel_button       );
@@ -80,10 +82,13 @@ public class PassphraseChangeActivity extends PassphraseActivity {
     this.cancelButton.setOnClickListener(new CancelButtonClickListener());
 
     if (TextSecurePreferences.isPasswordDisabled(this)) {
+      TextSecurePreferences.setHintText(this, "");
       this.originalPassphrase.setVisibility(View.GONE);
     } else {
       this.originalPassphrase.setVisibility(View.VISIBLE);
     }
+
+    hint.setText(TextSecurePreferences.getHintText(this));
   }
 
   private void verifyAndSavePassphrases() {
@@ -94,6 +99,7 @@ public class PassphraseChangeActivity extends PassphraseActivity {
     String original         = (originalText == null ? "" : originalText.toString());
     String passphrase       = (newText == null ? "" : newText.toString());
     String passphraseRepeat = (repeatText == null ? "" : repeatText.toString());
+    String hintText         = (hint.getText() != null ? hint.getText().toString() : "");
 
     if (TextSecurePreferences.isPasswordDisabled(this)) {
       original = MasterSecretUtil.UNENCRYPTED_PASSPHRASE;
@@ -108,6 +114,7 @@ public class PassphraseChangeActivity extends PassphraseActivity {
       this.newPassphrase.setError(getString(R.string.PassphraseChangeActivity_enter_new_passphrase_exclamation));
       this.newPassphrase.requestFocus();
     } else {
+      TextSecurePreferences.setHintText(this, hintText);
       new ChangePassphraseTask(this).execute(original, passphrase);
     }
   }
