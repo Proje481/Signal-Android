@@ -20,6 +20,7 @@
                    android:layout_marginTop="30dp"/>
 
         <RelativeLayout
+            android:id="@+id/relative_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/watermark">
@@ -82,6 +83,14 @@
                          android:paddingRight="10dp"
                          android:paddingBottom="5dp"/>
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/hint_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/relative_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"/>
 
     </RelativeLayout>
 
