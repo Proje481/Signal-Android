@@ -42,6 +42,7 @@ import org.thoughtcrime.securesms.crypto.MasterSecretUtil;
 import org.thoughtcrime.securesms.util.DynamicIntroTheme;
 import org.thoughtcrime.securesms.util.DynamicLanguage;
 import org.thoughtcrime.securesms.crypto.MasterSecret;
+import org.thoughtcrime.securesms.util.TextSecurePreferences;
 
 /**
  * Activity that prompts for a user's passphrase.
@@ -57,6 +58,7 @@ public class PassphrasePromptActivity extends PassphraseActivity {
   private ImageButton     showButton;
   private ImageButton     hideButton;
   private AnimatingToggle visibilityToggle;
+  private TextView        hintText;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -142,6 +144,7 @@ public class PassphrasePromptActivity extends PassphraseActivity {
     hideButton       = (ImageButton)     findViewById(R.id.passphrase_visibility_off);
     visibilityToggle = (AnimatingToggle) findViewById(R.id.button_toggle);
     passphraseText   = (EditText)        findViewById(R.id.passphrase_edit);
+    hintText         = (TextView)        findViewById(R.id.hint_text);
     SpannableString hint = new SpannableString("  " + getString(R.string.PassphrasePromptActivity_enter_passphrase));
     hint.setSpan(new RelativeSizeSpan(0.9f), 0, hint.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
     hint.setSpan(new TypefaceSpan("sans-serif"), 0, hint.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);
@@ -153,6 +156,12 @@ public class PassphrasePromptActivity extends PassphraseActivity {
     passphraseText.setOnEditorActionListener(new PassphraseActionListener());
     passphraseText.setImeActionLabel(getString(R.string.prompt_passphrase_activity__unlock),
                                      EditorInfo.IME_ACTION_DONE);
+
+    if (TextSecurePreferences.hasHint(this)) {
+      hintText.setText("Hint: " + TextSecurePreferences.getHintText(this));
+    } else {
+      hintText.setVisibility(View.GONE);
+    }
   }
 
   private class PassphraseActionListener implements TextView.OnEditorActionListener {
