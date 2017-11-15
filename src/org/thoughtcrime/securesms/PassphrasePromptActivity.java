@@ -158,7 +158,7 @@ public class PassphrasePromptActivity extends PassphraseActivity {
                                      EditorInfo.IME_ACTION_DONE);
 
     if (TextSecurePreferences.hasHint(this)) {
-      hintText.setText("Hint: " + TextSecurePreferences.getHintText(this));
+      hintText.setText(getString(R.string.PassphrasePromptActivity_hint) + TextSecurePreferences.getHintText(this));
     } else {
       hintText.setVisibility(View.GONE);
     }
