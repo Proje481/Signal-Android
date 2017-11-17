@@ -13,11 +13,6 @@
                     android:summary="@string/preferences__change_your_passphrase"
                     android:dependency="pref_enable_passphrase_temporary"/>
 
-        <Preference android:key="pref_change_hint"
-            android:title="@string/preferences__change_hint"
-            android:summary="@string/preferences__change_your_hint"
-            android:dependency="pref_enable_passphrase_temporary"/>
-
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
                 android:defaultValue="false"
                 android:key="pref_timeout_passphrase"

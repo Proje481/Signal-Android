@@ -35,7 +35,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
   private MasterSecret       masterSecret;
   private CheckBoxPreference disablePassphrase;
-  private Preference         changeHint;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -43,10 +42,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
 
     masterSecret      = getArguments().getParcelable("master_secret");
     disablePassphrase = (CheckBoxPreference) this.findPreference("pref_enable_passphrase_temporary");
-    changeHint        = this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_HINT_PREF);
 
-    changeHint
-        .setOnPreferenceClickListener(new ChangeHintClickListener());
     this.findPreference(TextSecurePreferences.CHANGE_PASSPHRASE_PREF)
         .setOnPreferenceClickListener(new ChangePassphraseClickListener());
     this.findPreference(TextSecurePreferences.PASSPHRASE_TIMEOUT_INTERVAL_PREF)
@@ -57,8 +53,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         .setOnPreferenceClickListener(new BlockedContactsClickListener());
     disablePassphrase
         .setOnPreferenceChangeListener(new DisablePassphraseClickListener());
-
-    changeHint.setEnabled(TextSecurePreferences.hasHint(getActivity()));
   }
 
   @Override
@@ -75,7 +69,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
     initializeTimeoutSummary();
 
     disablePassphrase.setChecked(!TextSecurePreferences.isPasswordDisabled(getActivity()));
-    changeHint.setEnabled(TextSecurePreferences.hasHint(getActivity()));
   }
 
   private void initializePlatformSpecificOptions() {
@@ -114,14 +107,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
           Toast.LENGTH_LONG).show();
       }
 
-      return true;
-    }
-  }
-
-  private class ChangeHintClickListener implements Preference.OnPreferenceClickListener {
-    @Override
-    public boolean onPreferenceClick(Preference preference) {
-      // TODO: NOT IMPLEMENTED YET
       return true;
     }
   }
