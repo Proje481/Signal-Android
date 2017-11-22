@@ -91,6 +91,16 @@ public class PassphraseChangeActivity extends PassphraseActivity {
     hint.setText(TextSecurePreferences.getHintText(this));
   }
 
+  private String hintControl(String password, String hint) {
+    if (hint.length() < 2)
+      return getString(R.string.PassphraseChangeActivity_hint_too_short);
+    if (hint.length() > 12)
+      return getString(R.string.PassphraseChangeActivity_hint_too_big);
+    if (hint.contains(password))
+      return getString(R.string.PassphraseChangeActivity_hint_contains_pass);
+    return null;
+  }
+
   private void verifyAndSavePassphrases() {
     Editable originalText = this.originalPassphrase.getText();
     Editable newText      = this.newPassphrase.getText();
@@ -114,8 +124,14 @@ public class PassphraseChangeActivity extends PassphraseActivity {
       this.newPassphrase.setError(getString(R.string.PassphraseChangeActivity_enter_new_passphrase_exclamation));
       this.newPassphrase.requestFocus();
     } else {
-      TextSecurePreferences.setHintText(this, hintText);
-      new ChangePassphraseTask(this).execute(original, passphrase);
+      String hintCheck = hintControl(passphrase, hintText);
+      if (hintCheck != null) {
+        this.hint.setError(hintCheck);
+        this.hint.requestFocus();
+      } else {
+        TextSecurePreferences.setHintText(this, hintText);
+        new ChangePassphraseTask(this).execute(original, passphrase);
+      }
     }
   }
 

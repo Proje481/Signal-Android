@@ -464,6 +464,9 @@
     <string name="PassphraseChangeActivity_passphrases_dont_match_exclamation">Passphrases don\'t match!</string>
     <string name="PassphraseChangeActivity_incorrect_old_passphrase_exclamation">Incorrect old passphrase!</string>
     <string name="PassphraseChangeActivity_enter_new_passphrase_exclamation">Enter new passphrase!</string>
+    <string name="PassphraseChangeActivity_hint_too_short">Hint is too short</string>
+    <string name="PassphraseChangeActivity_hint_too_big">Hint is too big</string>
+    <string name="PassphraseChangeActivity_hint_contains_pass">Hint must not contain password</string>
 
     <!-- DeviceProvisioningActivity -->
     <string name="DeviceProvisioningActivity_link_this_device">Link this device?</string>
@@ -493,7 +496,7 @@
 
     <!-- PassphrasePromptActivity -->
     <string name="PassphrasePromptActivity_enter_passphrase">Enter passphrase</string>
-    <string name="PassphrasePromptActivity_hint">Hint: </string>
+    <string name="PassphrasePromptActivity_hint">Hint:</string>
     <string name="PassphrasePromptActivity_watermark_content_description">Signal icon</string>
     <string name="PassphrasePromptActivity_ok_button_content_description">Submit passphrase</string>
     <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Invalid passphrase!</string>
