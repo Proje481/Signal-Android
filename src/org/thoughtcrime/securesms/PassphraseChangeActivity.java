@@ -92,8 +92,6 @@ public class PassphraseChangeActivity extends PassphraseActivity {
   }
 
   private String hintControl(String password, String hint) {
-    if (hint.length() < 2)
-      return getString(R.string.PassphraseChangeActivity_hint_too_short);
     if (hint.length() > 12)
       return getString(R.string.PassphraseChangeActivity_hint_too_big);
     if (hint.contains(password))
